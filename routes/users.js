@@ -6,14 +6,30 @@ const { request } = require("../app");
 
 router.use(bodyParser.json());
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+/*router.get("/", function (req, res, next) {
   res.send("this is Aimily");
-});
 
+});
+*/
+// GET users temporary function to see what's being added to database
+const getUsers = async (req, res, next) => {
+  try {
+    const results = await db(`SELECT *FROM users ORDER BY id ASC;`);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+router.get("/", getUsers);
 // POST create user name
 router.post("/", async (req, res, next) => {
   const { name, email } = req.body;
-  await db(`insert into users (name, email) values ('${name}, '${email});`);
+  try {
+    await db(`insert into users (name, email) values ("${name}", "${email}");`);
+    getUsers(req, res);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 //POST create goal with deadline

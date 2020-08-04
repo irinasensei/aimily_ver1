@@ -6,15 +6,15 @@
 
 #### Database schema
 
-![](/database_schema.jpg)
+![database schema](images/database_schema.jpg)
 
 #### Routes
 
-![](/routes_plan.png)
+![routes plan](/images/routes_plan.png)
 
 #### User flow
 
-![](/user_flow.jpg)
+![user flow](images/user_flow.jpg)
 
 _Very excited!_
 :smile:
